@@ -31,10 +31,11 @@ class NewsAdapter(
         holder.txvDescription.text = news.description
         //holder.imageAvatar.setImageResource(artist.image)
         Glide.with(context).load(news.image).into(holder.imageAvatar)
-        /*holder.itemView.setOnClickListener{
-            listener.onClickNews(news,)
-        }*/
-        holder.itemView.setOnClickListener { v ->
+
+        holder.itemView.setOnClickListener{
+            listener.onClickNews(news)
+        }
+        /*holder.itemView.setOnClickListener { v ->
             val activity = v!!.context as AppCompatActivity
             val newsDFragment = NewsDFragment()
             val sm = activity.supportFragmentManager.beginTransaction()
@@ -43,10 +44,10 @@ class NewsAdapter(
                 setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
                 val bundle = Bundle()
-                //bundle.putSerializable("news", news)
-                bundle.putString("title", news.title)
+                bundle.putSerializable("news", news)
+                /*bundle.putString("title", news.title)
                 bundle.putString("description", news.description)
-                bundle.putString("image", news.image)
+                bundle.putString("image", news.image)*/
                 Log.e("TAG",news.image)
                 newsDFragment.arguments = bundle
 
@@ -54,7 +55,7 @@ class NewsAdapter(
                 addToBackStack(null)
                 commit()
             }
-        }
+        }*/
 
     }
 }

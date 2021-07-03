@@ -21,24 +21,24 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(NewsFragment(),this)
+        replaceFragment(NewsFragment(), null/*,this*/)
         bottomNavigation.setOnNavigationItemSelectedListener (this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.menu_news -> replaceFragment(NewsFragment(),this)
-            R.id.menu_gallery -> replaceFragment(GalleryFragment(),this)
-            R.id.menu_settings -> replaceFragment(SettingsFragment(),this)
+            R.id.menu_news -> replaceFragment(NewsFragment(),null/*,this*/)
+            R.id.menu_gallery -> replaceFragment(GalleryFragment(), null/*,this*/)
+            R.id.menu_settings -> replaceFragment(SettingsFragment(), null/*,this*/)
         }
         return false
     }
 
-    private fun replaceFragment(fragment: Fragment, context: Context){
-        val sm = supportFragmentManager.beginTransaction()
-
-        sm.apply {
+    fun replaceFragment(fragment: Fragment, bundle: Bundle?){
+        /*val sm = supportFragmentManager.beginTransaction()*/
+        supportFragmentManager.beginTransaction().apply {
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            fragment.arguments = bundle
             replace(R.id.container, fragment)
             addToBackStack(null)
             commit()

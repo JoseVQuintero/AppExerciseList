@@ -1,5 +1,4 @@
 package com.danisable.appexerciselist.presentation.data.news
-import com.danisable.appexerciselist.R
 import com.danisable.appexerciselist.domain.model.News
 
 object News {
